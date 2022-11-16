@@ -1,0 +1,62 @@
+Commands :
+path/{path},{path}.... {>s (this is an argument, use to show only files in the dir without files from subdirs , size is also calculated from only those files)}
+select/{command1}&&{command2}&&{command3}...(will select only files that fit all the criteria)
+	ext:{.ext}
+	index:{index1},{index2},{index3},{index4},....
+	min:{25mb} (will select files above stated size)
+	max:{25mb} (will select files below stated size)
+	ref:{ref path}(will select all files with the same names as files from the ref directory (ie a "mod removal tool"))
+	all (will select all)
+
+add/{command1}&&{command2}&&{command3}...(will add to selected only files that fit all the criteria)
+	ext:{.ext}
+	index:{index1},{index2},{index3},{index4},....
+	min:{25mb} (will select files above stated size)
+	max:{25mb} (will select files below stated size)
+	ref:{ref path}(will select all files with the same names as files from the ref directory (ie a "mod removal tool"))
+	all (will add all)
+
+remove/{command1}&&{command2}&&{command3}...(will remove from selected only files that fit all the criteria)
+	ext:{.ext}
+	index:{index1},{index2},{index3},{index4},....
+	min:{25mb} (will select files above stated size)
+	max:{25mb} (will select files below stated size)
+	ref:{ref path}(will select all files with the same names as files from the ref directory (ie a "mod removal tool"))
+	all (will empty the select list)
+
+copy/{path to destination dir}
+
+delete/(WILL DELETE ALL SELECTED FILES FOR REAL ! DO NOT CONFUSE WITH REMOVE)
+
+show:
+	full(will print out all filenames in given dirs)
+	slc(will print out all selected filenames)
+	size
+		-total(will give total size of given dirs except when using	">s")
+		-sl(will give total size of selected files)
+
+lnk(will create shortcuts of every selected file in dir specified in LNKTarget.txt)
+lnk/del(will delete all shortcuts of every selected file in dir specified in LNKTarget.txt except the ones in subdirs)
+
+commands=['try','editcfg ','cfg','bulk','rl']
+rename/{subcommand}
+	cfg(will print out configs for rename )
+	rl(will reload configs from config.txt)
+	editcfg(will open config.txt for edit)
+	random (wil rename all selected files with random generated names)
+	manual (will allow you to rename every selected file manually , DOESNT KEEP EXT SO ADD IT YOURSELF, has its own subcommands)
+		>pass or >skip (skips current file without any changes)
+		>end (ends the rename loop)
+	if only 1 file selected  >{name}(example > rename/>name.pdf  will rename that single file , DOESNT KEEP EXT SO ADD IT YOURSELF)
+
+wtf/{subcommand}
+	full(will output list of all files to wtf-full.txt)
+		>{custom path}(does the same but ot a custom file , if it doesnt exist it will be created)
+	slc(will output list of all selected files to slc-full.txt)
+		>{custom path}(does the same but ot a custom file , if it doesnt exist it will be created)
+	example => wtf/full
+	example => wtf/full>C:\Users\Strelok\Desktop\TEST\full.txt
+	wipe-full(wtf-full.txt is emptied)
+	wipe-slc(wtf-slc.txt is emptied)
+
+if you have files selected and you change dir (give it a new path or paths) the files will stay selected
